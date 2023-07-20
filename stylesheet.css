@@ -967,6 +967,7 @@ input[type="checkbox"]:hover {
 h1,
 h2, 
 h5,
+h4,
 .mititle {
     background-image: linear-gradient(to right, #8e8174, #241910);
     -webkit-background-clip: text;
@@ -982,6 +983,7 @@ h5,
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h5,
+.dark-mode h4,
 .dark-mode .mititle {
     color: #faeedf;
     background-image: linear-gradient(to right, #f1dec7, white);
@@ -1350,7 +1352,7 @@ h5,
 
 .weather-card {
     top: 1.3rem;
-    left: 15rem;
+    left: 12rem;
     position: absolute;
     /* transform: translate(-50%, -50%); */
     z-index: 21;
@@ -1362,7 +1364,7 @@ h5,
     left: 0;
     position: relative;
     height: 12rem;
-    width: 16rem;
+    width:18rem;
     border-radius: 2rem;
     background-color: rgba(250, 238, 223, 0.5);
     backdrop-filter: blur(2px);
@@ -1378,16 +1380,16 @@ h5,
 
 .weather-card .left {
     position: relative;
-    left: 2rem;
-    top: 10%;
+    left: 1rem;
+    top: 5%;
     width: 2rem;
 }
 
 .weather-card .right {
     position: absolute;
-    left: 50%;
+    left: 6rem;
     top: 50%;
-    width: 2.5rem;
+    width: 85%;
 }
 
 .miicn {
@@ -1404,7 +1406,7 @@ h5,
 
 .weather-card .left .weather-status {
     position: relative;
-    top: 5rem;
+    top: 6rem;
     left: 1.5rem;
     width: 4rem;
 }
@@ -1414,7 +1416,8 @@ h5,
     top: -5rem;
     left: 1rem;
     font-size: larger;
-    width: 3.5rem;
+    width: 75%;
+    height: 100%;
 }
 
 .weather-card .right .degree {
@@ -1426,7 +1429,7 @@ h5,
 }
 .weather-card .down{
     position: relative;
-    top: -3.9rem;
+    top: -4.5rem;
     left: 1.5rem;
     width: 13rem;
     display: flex;
@@ -1434,8 +1437,6 @@ h5,
     justify-content: space-between;
     font-family: Comic Sans MS;
     color: #241910;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
 }
 
 .dark-mode .weather-card .down{
@@ -1525,4 +1526,42 @@ border-top-left-radius: 2rem;
     margin-bottom: 2rem;
     position: fixed;
     z-index: 2;
+}
+
+.changing {
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 21;
+    position: fixed;
+    height: 19rem;
+    width: 16rem;
+    border-radius: 2rem;
+    background-color: rgba(250, 238, 223, 0.5);
+    backdrop-filter: blur(5px);
+    font-family: Comic Sans MS;
+    -webkit-backdrop-filter: blur(2px);
+    color: #241910;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Center elements vertically */
+  }
+  
+  .dark-mode .changing {
+    background-color: rgba(210, 180, 140, 0.2);
+    color: #f1dec7;
+  }
+  #cuteimg{
+    margin-top:1rem;
+    z-index: 22;
+    height: 12rem;
+    width: 12rem;
+    border-radius: 2rem;
+}  
+#heroquote{
+    width: 75%;
+    height: 33%;
+    margin-left:1rem;
+    padding-left: 1rem;
 }
