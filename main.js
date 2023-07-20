@@ -498,8 +498,7 @@ function shuffleArray(array) {
     return array;
 }
     const apiKey = '382f52ea12584954cbe6d829245626a7';
-    const otherapiKey = 'a2b325f067ce4959b334d0350220e88b';
-
+    
     function setWeatherIcon(description) {
         const iconElement = document.getElementById('weather-icon');
         let iconFileName = '';
