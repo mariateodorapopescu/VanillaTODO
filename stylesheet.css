@@ -26,9 +26,14 @@ input:hover::placeholder {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    width: 30%;
+    height: 35%;
     z-index: 21;
+    position: relative;
+    overflow-y: auto;
+    top: 28rem;
+    left: 31.5rem;
+    margin: 0;
 }
 
 .cevaa {
@@ -51,6 +56,7 @@ input:hover::placeholder {
     width: 21rem;
     max-width: 21rem;
     z-index: 21;
+    position: relative;
 }
 
 .parent:hover {
@@ -185,7 +191,7 @@ input[type="checkbox"]:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: 200;
+    z-index: 21;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
@@ -196,6 +202,7 @@ input[type="checkbox"]:hover {
     flex-direction: column;
     justify-content: center;
     background-color: rgba(250, 238, 223, 0.3);
+    z-index: 21;
 }
 
 .dark-mode #hbrnm,
@@ -306,7 +313,10 @@ input[type="checkbox"]:hover {
     cursor: pointer;
     overflow: hidden;
     float: left;
-    z-index: 21;
+    top: 1rem;
+    left: 95%;
+    z-index: 25;
+    transform: tranlate(-50%, -50%);
 }
 
 .sun {
@@ -955,20 +965,25 @@ input[type="checkbox"]:hover {
 }
 
 h1,
-h2, h5 {
-    background-image: linear-gradient(to right, #ab9b8b, #241910);
+h2, 
+h5,
+.mititle {
+    background-image: linear-gradient(to right, #8e8174, #241910);
     -webkit-background-clip: text;
     /* For Safari */
     -webkit-text-fill-color: transparent;
     /* For Safari */
     background-clip: text;
     color: transparent;
+    font-family: Comic Sans Ms;
+    padding: 0.2rem;
 }
 
 .dark-mode h1,
 .dark-mode h2,
-.dark-mode h5 {
-    /* background-image: linear-gradient(to right, #D2B48C, #faeedf); */
+.dark-mode h5,
+.dark-mode .mititle {
+    color: #faeedf;
     background-image: linear-gradient(to right, #f1dec7, white);
     -webkit-background-clip: text;
     /* For Safari */
@@ -1001,6 +1016,10 @@ h2, h5 {
     -webkit-backdrop-filter: blur(3px);
     border-radius: 2rem;
     padding: 1rem;
+    z-index: 21;
+    top: 1rem;
+    left: 1rem;
+    position: fixed;
 }
 
 .dark-mode .footer {
@@ -1100,12 +1119,12 @@ h2, h5 {
 }
 
 .music-container {
-    position: relative;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 15%;
-    left: 75%;
+    top: 23rem;
+    left: 23rem;
     transform: translate(-50%, -50%);
     background-color: rgba(250, 238, 223, 0.5);
     backdrop-filter: blur(2px);
@@ -1330,11 +1349,12 @@ h2, h5 {
 }
 
 .weather-card {
-    top: 5%;
-    left: 12%;
+    top: 1.3rem;
+    left: 15rem;
     position: absolute;
     /* transform: translate(-50%, -50%); */
     z-index: 21;
+    position: fixed;
 }
 
 .weather-container {
@@ -1415,6 +1435,92 @@ h2, h5 {
     font-family: Comic Sans MS;
     color: #241910;
 }
+
 .dark-mode .weather-card .down{
     color: #f1dec7;
+}
+
+.navigation{
+    position: fixed;
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    width: 10rem;
+    border-radius: 2rem;
+    box-sizing: initial;
+    background-color: rgba(250, 238, 223, 0.5);
+    backdrop-filter: blur(1rem);
+    transition: width 0.5s;
+    -webkit-backdrop-filter: blur(2px);
+    margin-bottom: 1rem;
+    z-index: 10;
+}
+
+.dark-mode .navigation {
+    background-color: rgba(210, 180, 140, 0.2);
+}
+
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    padding-left: 0.5rem;
+}
+
+.navigation ul li{
+position: relative;
+list-style: none;
+width: 100%;
+border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+.navigation ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #241910;
+}
+
+.navigation ul li.active a{
+    color:#f2e0c6;
+}
+
+.navigation ul li.active{
+    background-color: #b99976;
+}
+
+.navigation ul li img{
+    position: relative;
+    display: block;
+    max-width: 1rem;
+    max-height: 1rem;
+    display: flex;
+    text-decoration: none;
+    color: #241910;
+}
+.icon,
+.miicn {
+    padding: 0.5rem;
+    filter: invert(100%) sepia(500%) hue-rotate(350deg) brightness(25%) saturate(35%);
+}
+
+.dark-mode .icon,
+.dark-mode .miicn{
+    filter: invert(100%) sepia(500%) hue-rotate(350deg) brightness(125%) saturate(75%);
+}
+.nujceiasta{
+    font-family: Comic Sans MS;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 21;
+    margin-bottom: 2rem;
+    position: fixed;
+    z-index: 2;
 }
