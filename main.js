@@ -518,29 +518,8 @@ function shuffleArray(array) {
         // Set the icon image
         iconElement.src = `${iconFileName}`;
       }
-        // Get the current location using the Geolocation API
-        function getCurrentLocation() {
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(
-                position => {
-                  const latitude = position.coords.latitude;
-                  const longitude = position.coords.longitude;
-                  // Call the function to make the API request based on latitude and longitude
-                  getWeatherData(latitude, longitude);
-                },
-                error => {
-                  console.error('Error getting location:', error);
-                }
-              );
-            } else {
-              console.error('Geolocation is not supported by this browser.');
-            }
-          }
-      
-          // Call the function to get the current location and weather data
-          getCurrentLocation();
-      function getWeatherData(latitude, longitude) {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+      function getPublicIPAddress() {
+        fetch('https://api.ipify.org?format=json')
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -548,23 +527,57 @@ function shuffleArray(array) {
             return response.json();
           })
           .then(data => {
-            console.log('Latitude:', latitude);
-            console.log('Longitude:', longitude);
-            console.log('City:', data.name);
+            // Update the public IP address on the webpage
+            fetch(`http://ip-api.com/json/${data.ip}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Get the city from the geolocation data
+              const city = data.city;
+              // Update the city on the webpage
+              const cityElement = document.getElementById('city');
+              cityElement.innerText = city;
+    
+              // Fetch the weather data for the city
+              fetchWeatherData(city);
+            })
+            .catch(error => {
+              console.error('Fetch error:', error);
+            });
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+          });
+      }
+  
+      // Function to fetch weather data for a given city
+      function fetchWeatherData(city) {
+        // Make the API request to get weather data
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('nuuu');
+            }
+            return response.json();
+          })
+          .then(data => {
             // Handle the weather data here
-            const cityElement = document.getElementById('city');
-          const descriptionElement = document.getElementById('des');
-          const degreeElement = document.getElementById('deg');
-          const humidityElement = document.getElementById('humidity');
-          const pressureElement = document.getElementById('pressure');
-          const windSpeedElement = document.getElementById('wind-speed');
-
-          cityElement.innerText = data.name;
-          descriptionElement.innerText = data.weather[0].description;
-          degreeElement.innerText = `${Math.floor(data.main.temp - 273.15)}°C`;
-          humidityElement.innerText = `${data.main.humidity}%`;
-          pressureElement.innerText = `${data.main.pressure}hPa`;
-          windSpeedElement.innerText = `${data.wind.speed}m/s`;
+            const descriptionElement = document.getElementById('des');
+            const degreeElement = document.getElementById('deg');
+            const humidityElement = document.getElementById('humidity');
+            const pressureElement = document.getElementById('pressure');
+            const windSpeedElement = document.getElementById('wind-speed');
+  
+            descriptionElement.innerText = data.weather[0].description;
+            degreeElement.innerText = `${Math.floor(data.main.temp - 273.15)} °C`;
+            humidityElement.innerText = `${data.main.humidity}%`;
+            pressureElement.innerText = `${data.main.pressure} hPa`;
+            windSpeedElement.innerText = `${data.wind.speed} m/s`;
+  
             // Set the weather icon
             setWeatherIcon(data.weather[0].description.toLowerCase());
           })
@@ -572,16 +585,19 @@ function shuffleArray(array) {
             console.error('Fetch error:', error);
           });
       }
+  
 
-      let cevalista = document.querySelectorAll(".list");
-      for (let i = 0; i < cevalista.length; i++){
-        cevalista[i].onclick() = function(){
-            let j = 0;
-            while (j < cevalista.length)
-            {
-                cevalista[j++].className = 'list';
-            }
-            cevalista[i].className = 'list active';
-        }
-      }
-    
+    //   let cevalista = document.querySelectorAll(".list");
+    //   for (let i = 0; i < cevalista.length; i++){
+    //     cevalista[i].onclick() = function(){
+    //         let j = 0;
+    //         while (j < cevalista.length)
+    //         {
+    //             cevalista[j++].className = 'list';
+    //         }
+    //         cevalista[i].className = 'list active';
+    //     }
+    //   }
+
+  
+    getPublicIPAddress();
