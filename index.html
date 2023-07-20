@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> VanilaTODO</title>
+    <title> Vanila todo list</title>
     <link rel="icon" type="image/png" href="https://i.pinimg.com/1200x/68/8a/a9/688aa9e8fdb8cd02f228714ca69c318e.jpg">
     <link rel="stylesheet" href="stylesheet.css" />
 </head>
@@ -70,7 +70,7 @@
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>
-        <div class="incaceva">
+        <!-- <div class="incaceva"> -->
             <div class="toggle-switch" id="mytoggle">
                 <div class="ray1"></div>
                 <div class="ray2"></div>
@@ -84,7 +84,9 @@
                 <div class="cloud1"></div>
                 <div class="cloud2"></div>
             </div>
-        </div>
+        <!-- </div> -->
+    </div>
+        
     </div>
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
@@ -116,6 +118,7 @@
             </div>
         </div>
     </div>
+    
     <div class="weather-card">
         <div class="weather-container">
             <div class="left">
@@ -133,7 +136,47 @@
                 <h5>W:<span id="wind-speed">-</span>;</h5>
         </div>
     </div>
-    <div class="container" id="total">
+    <div class="navigation">
+        <ul>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/846/846449.png"></span>
+                    <span class="mititle">All</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://static.thenounproject.com/png/1668947-200.png"></span>
+                    <span class="mititle">Completed</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/x-512.png"></span>
+                    <span class="mititle">In progress</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"></span>
+                    <span class="mititle">Deleted</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://cdn.icon-icons.com/icons2/1993/PNG/512/circle_customer_help_info_information_service_support_icon_123208.png"></span>
+                    <span class="mititle">Help + About</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><img src="https://pixlok.com/wp-content/uploads/2021/10/Profile_Icon-mc42.png"></span>
+                    <span class="mititle">Profile</span>
+                </a>
+            </li>
+        </ul>
+</div>
+    <div class="nujceiasta">
         <div class="clock">
             <div class="time" id="time"></div>
             <div class="date" id="date"></div>
@@ -146,6 +189,8 @@
             <button class="nuj" id="todel" style="display:none">Clear everything</button>
         </div>
         <input class="parent" id="list" placeholder="What needs to be done?">
+    </div>
+    <div class="container" id="total">
     </div>
     <div id="hbrnm" style="display:block"></div>
 </body>
