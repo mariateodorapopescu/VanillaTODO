@@ -1361,7 +1361,7 @@ h5,
     top: 0;
     left: 0;
     position: relative;
-    height: 14rem;
+    height: 12rem;
     width: 16rem;
     border-radius: 2rem;
     background-color: rgba(250, 238, 223, 0.5);
@@ -1434,6 +1434,7 @@ h5,
     justify-content: space-between;
     font-family: Comic Sans MS;
     color: #241910;
+    margin-bottom: 0.5rem;
 }
 
 .dark-mode .weather-card .down{
