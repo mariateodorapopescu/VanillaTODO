@@ -499,25 +499,6 @@ function shuffleArray(array) {
 }
     const apiKey = '382f52ea12584954cbe6d829245626a7';
 
-    // // Function to make the API request based on latitude and longitude
-    // function getWeatherData(latitude, longitude) {
-    //     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
-    //       .then(response => {
-    //         if (!response.ok) {
-    //           throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //       })
-    //       .then(data => {
-    //         // Handle the weather data here
-    //         const wesee1 = document.getElementById('city').innerText =  `${data.name}`;
-    //     const wesee2 = document.getElementById('des').innerText =  `${data.weather[0].description}`;
-    //     const wesee3 = document.getElementById('deg').innerText =  `${Math.floor(data.main.temp - 273.15)} °C`;
-    //       })
-    //       .catch(error => {
-    //         console.error('Fetch error:', error);
-    //       });
-    //   }
     function setWeatherIcon(description) {
         const iconElement = document.getElementById('weather-icon');
         let iconFileName = '';
@@ -525,7 +506,7 @@ function shuffleArray(array) {
         // Map the weather description to the appropriate icon file name
         if (description.includes('cloud') || description.includes('clouds')) {
           iconFileName = 'https://cdn-icons-png.flaticon.com/512/149/149209.png';
-        } else if (description.includes('rain')) {
+        } else if (description.includes('rain')||description.includes('thunderstorm')) {
           iconFileName = 'https://clipart-library.com/images/Bcgrrzq7i.png';
         } else if (description.includes('sun') || description.includes('clear')) {
           iconFileName = 'https://cdn-icons-png.flaticon.com/512/54/54241.png';
@@ -537,7 +518,27 @@ function shuffleArray(array) {
         // Set the icon image
         iconElement.src = `${iconFileName}`;
       }
+        // Get the current location using the Geolocation API
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                position => {
+                  const latitude = position.coords.latitude;
+                  const longitude = position.coords.longitude;
+                  // Call the function to make the API request based on latitude and longitude
+                  getWeatherData(latitude, longitude);
+                },
+                error => {
+                  console.error('Error getting location:', error);
+                }
+              );
+            } else {
+              console.error('Geolocation is not supported by this browser.');
+            }
+          }
       
+          // Call the function to get the current location and weather data
+          getCurrentLocation();
       function getWeatherData(latitude, longitude) {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
           .then(response => {
@@ -547,6 +548,9 @@ function shuffleArray(array) {
             return response.json();
           })
           .then(data => {
+            console.log('Latitude:', latitude);
+            console.log('Longitude:', longitude);
+            console.log('City:', data.name);
             // Handle the weather data here
             const cityElement = document.getElementById('city');
           const descriptionElement = document.getElementById('des');
@@ -568,24 +572,16 @@ function shuffleArray(array) {
             console.error('Fetch error:', error);
           });
       }
-      // Get the current location using the Geolocation API
-      function getCurrentLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            position => {
-              const latitude = position.coords.latitude;
-              const longitude = position.coords.longitude;
-              // Call the function to make the API request based on latitude and longitude
-              getWeatherData(latitude, longitude);
-            },
-            error => {
-              console.error('Error getting location:', error);
+
+      let cevalista = document.querySelectorAll(".list");
+      for (let i = 0; i < cevalista.length; i++){
+        cevalista[i].onclick() = function(){
+            let j = 0;
+            while (j < cevalista.length)
+            {
+                cevalista[j++].className = 'list';
             }
-          );
-        } else {
-          console.error('Geolocation is not supported by this browser.');
+            cevalista[i].className = 'list active';
         }
       }
-  
-      // Call the function to get the current location and weather data
-      getCurrentLocation();
+    
