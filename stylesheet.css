@@ -1435,6 +1435,7 @@ h5,
     font-family: Comic Sans MS;
     color: #241910;
     margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .dark-mode .weather-card .down{
