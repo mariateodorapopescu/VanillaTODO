@@ -498,6 +498,7 @@ function shuffleArray(array) {
     return array;
 }
     const apiKey = '382f52ea12584954cbe6d829245626a7';
+    const otherapiKey = 'a2b325f067ce4959b334d0350220e88b';
 
     function setWeatherIcon(description) {
         const iconElement = document.getElementById('weather-icon');
@@ -519,7 +520,7 @@ function shuffleArray(array) {
         iconElement.src = `${iconFileName}`;
       }
       function getPublicIPAddress() {
-        fetch('https://ipapi.co/json/')
+        fetch('https://api.ipify.org?format=json')
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -528,7 +529,7 @@ function shuffleArray(array) {
           })
           .then(data => {
             // Update the public IP address on the webpage
-            fetch(`http://ip-api.com/json/${data.ip}`)
+            fetch(`https://ipapi.co/${data.ip}/json`)
             .then(response => {
               if (!response.ok) {
                 throw new Error('Network response was not ok');
