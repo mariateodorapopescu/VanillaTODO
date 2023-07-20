@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Vanila todo list</title>
+    <link rel="icon" type="image/png" href="https://i.pinimg.com/1200x/68/8a/a9/688aa9e8fdb8cd02f228714ca69c318e.jpg">
+    <link rel="stylesheet" href="stylesheet.css" />
+</head>
+
+<body>
+    <div id="preloader" class="day-mode">
+        <div class="loader">
+            <span style="--i:0"></span>
+            <span style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span style="--i:3"></span>
+            <span style="--i:4"></span>
+            <span style="--i:5"></span>
+            <span style="--i:6"></span>
+            <span style="--i:7"></span>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="sunny"></div>
+        <div class="moony"></div>
+        <div class="star"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+        <div class="clod"></div>
+    </div>
+    <div class="darkmod">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="incaceva">
+            <div class="toggle-switch" id="mytoggle">
+                <div class="ray1"></div>
+                <div class="ray2"></div>
+                <div class="ray3"></div>
+                <div class="ray4"></div>
+                <div class="sun"></div>
+                <div class="moon"></div>
+                <div class="clouds"></div>
+                <div class="stars1"></div>
+                <div class="stars2"></div>
+                <div class="cloud1"></div>
+                <div class="cloud2"></div>
+            </div>
+        </div>
+    </div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="pp">We use cookies to enhance your experience. By using our website, you consent to our use of cookies.</div>
+            <button id="accept-cookie" class="accept-cookie">Accept</button>
+        </div>
+    </div>
+
+    <div class="music-container">
+        <div class="music">
+            <h2 class="title">Click play array to play audio</h2>
+            <div class="player">
+                <audio src="WhiteNoise.mp3"></audio>
+                <div class="progress-bar">
+                    <input class="progress-slider" type="range" min="0" max="100" step="0.1">
+                </div>
+                <div class="btnss">
+                    <span class="shuffle-btn"></span>
+                    <span class="prev"></span>
+                    <span class="plypause"></span>
+                    <span class="next"></span>
+                    <span class="repeat-btn"></span>
+                    <span class="volume-down-btn"></span>
+                    <span class="volume-up-btn"></span>
+                </div>
+                <div class="volume-control">
+                    <input class="volume-slider" type="range" min="0" max="100" step="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather-card">
+        <div class="weather-container">
+            <div class="left">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149209.png" class="miicn" id="weather-icon">
+                <h5 class="weather-status" id="des">Partly Cloud</h5>
+            </div>
+            <div class="right">
+                <h5 class="city" id="city">-</h5>
+                <h5 class="degree" id="deg">-°C</h5>
+            </div>
+        </div>
+        <div class="down">
+            <h5>H:<span id="humidity">-</span>;</h5>
+                <h5>P:<span id="pressure">-</span>;</h5>
+                <h5>W:<span id="wind-speed">-</span>;</h5>
+        </div>
+    </div>
+    <div class="container" id="total">
+        <div class="clock">
+            <div class="time" id="time"></div>
+            <div class="date" id="date"></div>
+        </div>
+        <div class="hh1">
+            <h1>todos</h1>
+        </div>
+        <div class="cevaa">
+            <button class="nuj" style="display:none">Check everything</button>
+            <button class="nuj" id="todel" style="display:none">Clear everything</button>
+        </div>
+        <input class="parent" id="list" placeholder="What needs to be done?">
+    </div>
+    <div id="hbrnm" style="display:block"></div>
+</body>
+<script src="main.js"></script>
+
+</html>
