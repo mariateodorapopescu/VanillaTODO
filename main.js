@@ -537,6 +537,7 @@ function shuffleArray(array) {
             })
             .then(data => {
               // Get the city from the geolocation data
+              console.log(data);
               const city = data.city;
               // Update the city on the webpage
               const cityElement = document.getElementById('city');
@@ -601,3 +602,48 @@ function shuffleArray(array) {
 
   
     getPublicIPAddress();
+    const images = [
+        '1.jpeg', // Sunday
+        '2.jpeg', // Monday
+        '3.jpeg', // Tuesday
+        '4.jpeg', // Wednesday
+        '5.jpeg', // Thursday
+        '6.jpeg', // Friday
+        '7.jpeg'  // Saturday
+      ];
+  
+      const quotes = [
+        'You are capable of amazing things.',
+        'Every day is a new beginning.',
+        'You are enough.',
+        'The best is yet to come.',
+        'You were born to be real, not to be perfect.',
+        'Your potential is endless.',
+        'Life is tough, but so are you.'
+      ];
+  
+      function getDayOfWeek() {
+        const date = new Date();
+        return date.getDay();
+      }
+  
+      function changeImageDaily() {
+        const dailyquote = document.getElementById('heroquote');
+        const dailyImage = document.getElementById('cuteimg');
+        const dayOfWeek = getDayOfWeek();
+  
+        // Get the corresponding image source and quote from the arrays based on the day of the week
+        const imageSource = images[dayOfWeek];
+        const quote = quotes[dayOfWeek];
+  
+        // Change the image source and quote text
+        dailyImage.src = imageSource;
+        dailyquote.innerText = quote;
+  
+        // Optional: You can add alt text or other attributes if needed
+        dailyImage.alt = `Image of ${dayOfWeek}`;
+      }
+  
+      // Call the function to change the image and quote daily
+      changeImageDaily();
+      
