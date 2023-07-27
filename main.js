@@ -73,10 +73,12 @@ document.getElementById("hbrnm").appendChild(ceva);
 const toggleSwitch = document.querySelector('.toggle-switch');
 const sunElement = document.querySelector('.sun');
 const moonElement = document.querySelector('.moon');
+const theroot = document.querySelector(':root');
 
 // Function to toggle between light and dark mode
 const toggleMode = (isDarkMode) => {
     document.body.classList.toggle('dark-mode');
+    // theroot.toggle('dark-mode');
     document.getElementById("total").classList.toggle('dark-mode');
     ceva.classList.toggle('dark-mode');
     sunElement.classList.toggle('move');
@@ -497,153 +499,156 @@ function shuffleArray(array) {
 
     return array;
 }
-    const apiKey = '382f52ea12584954cbe6d829245626a7';
-    
-    function setWeatherIcon(description) {
-        const iconElement = document.getElementById('weather-icon');
-        let iconFileName = '';
-      
-        // Map the weather description to the appropriate icon file name
-        if (description.includes('cloud') || description.includes('clouds')) {
-          iconFileName = 'https://cdn-icons-png.flaticon.com/512/149/149209.png';
-        } else if (description.includes('rain')||description.includes('thunderstorm')) {
-          iconFileName = 'https://clipart-library.com/images/Bcgrrzq7i.png';
-        } else if (description.includes('sun') || description.includes('clear')) {
-          iconFileName = 'https://cdn-icons-png.flaticon.com/512/54/54241.png';
-        } else {
-          // Default icon for other weather conditions
-          iconFileName = 'https://www.transparentpng.com/thumb/line/DHcW1z-png-black-thick-horizontal-line.png';
-        }
-      
-        // Set the icon image
-        iconElement.src = `${iconFileName}`;
-      }
-      function getPublicIPAddress() {
-        fetch('https://api.ipify.org?format=json')
-          .then(response => {
+const apiKey = '382f52ea12584954cbe6d829245626a7';
+
+function setWeatherIcon(description) {
+    const iconElement = document.getElementById('weather-icon');
+
+    // Map the weather description to the appropriate icon name
+    if (description.includes('cloud') || description.includes('clouds')) {
+        iconElement.innerHTML = '<ion-icon name="cloudy-outline"></ion-icon>';
+    } else if (description.includes('rain')) {
+        iconElement.innerHTML = '<ion-icon name="rainy-outline"></ion-icon>';
+    } else if (description.includes('thunderstorm')) {
+        iconElement.innerHTML = '<ion-icon name="thunderstorm-outline"></ion-icon>';
+    } else if (description.includes('sun') || description.includes('clear') || (description.includes('sunny') && new Date().getHours() < 20 && new Date().getHours() > 4)) {
+        iconElement.innerHTML = '<ion-icon name="sunny-outline"></ion-icon>';
+    } else if (description.includes('snow')) {
+        iconElement.innerHTML = '<ion-icon name="snow-outline"></ion-icon>';
+    } else if (description.includes('mist') || description.includes('windy')) {
+        iconElement.innerHTML = '<ion-icon name="reorder-four-outline"></ion-icon>';
+    } else {
+        // Default icon for other weather conditions
+        iconElement.innerHTML = '<ion-icon name="moon-outline"></ion-icon>';
+    }
+}
+
+
+function getPublicIPAddress() {
+    fetch('https://api.ipify.org?format=json')
+        .then(response => {
             if (!response.ok) {
-              throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => {
+        })
+        .then(data => {
             // Update the public IP address on the webpage
             fetch(`https://ipapi.co/${data.ip}/json`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then(data => {
-              // Get the city from the geolocation data
-              console.log(data);
-              const city = data.city;
-              // Update the city on the webpage
-              const cityElement = document.getElementById('city');
-              cityElement.innerText = city;
-    
-              // Fetch the weather data for the city
-              fetchWeatherData(city);
-            })
-            .catch(error => {
-              console.error('Fetch error:', error);
-            });
-          })
-          .catch(error => {
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Get the city from the geolocation data
+                    console.log(data);
+                    const city = data.city;
+                    // Update the city on the webpage
+                    const cityElement = document.getElementById('city');
+                    cityElement.innerText = city;
+
+                    // Fetch the weather data for the city
+                    fetchWeatherData(city);
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        })
+        .catch(error => {
             console.error('Fetch error:', error);
-          });
-      }
-  
-      // Function to fetch weather data for a given city
-      function fetchWeatherData(city) {
-        // Make the API request to get weather data
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-          .then(response => {
+        });
+}
+
+// Function to fetch weather data for a given city
+function fetchWeatherData(city) {
+    // Make the API request to get weather data
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+        .then(response => {
             if (!response.ok) {
-              throw new Error('nuuu');
+                throw new Error('nuuu');
             }
             return response.json();
-          })
-          .then(data => {
+        })
+        .then(data => {
             // Handle the weather data here
             const descriptionElement = document.getElementById('des');
             const degreeElement = document.getElementById('deg');
             const humidityElement = document.getElementById('humidity');
             const pressureElement = document.getElementById('pressure');
             const windSpeedElement = document.getElementById('wind-speed');
-  
+
             descriptionElement.innerText = data.weather[0].description;
-            degreeElement.innerText = `${Math.floor(data.main.temp - 273.15)} °C`;
+            degreeElement.innerText = `${Math.floor(data.main.temp - 273.15)}°C`;
             humidityElement.innerText = `${data.main.humidity}%`;
             pressureElement.innerText = `${data.main.pressure} hPa`;
             windSpeedElement.innerText = `${data.wind.speed} m/s`;
-  
+
             // Set the weather icon
             setWeatherIcon(data.weather[0].description.toLowerCase());
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.error('Fetch error:', error);
-          });
-      }
-  
+        });
+}
 
-    //   let cevalista = document.querySelectorAll(".list");
-    //   for (let i = 0; i < cevalista.length; i++){
-    //     cevalista[i].onclick() = function(){
-    //         let j = 0;
-    //         while (j < cevalista.length)
-    //         {
-    //             cevalista[j++].className = 'list';
-    //         }
-    //         cevalista[i].className = 'list active';
-    //     }
-    //   }
 
-  
-    getPublicIPAddress();
-    const images = [
-        '1.jpeg', // Sunday
-        '2.jpeg', // Monday
-        '3.jpeg', // Tuesday
-        '4.jpeg', // Wednesday
-        '5.jpeg', // Thursday
-        '6.jpeg', // Friday
-        '7.jpeg'  // Saturday
-      ];
-  
-      const quotes = [
-        'You are capable of amazing things.',
-        'Every day is a new beginning.',
-        'You are enough.',
-        'The best is yet to come.',
-        'You were born to be real, not to be perfect.',
-        'Your potential is endless.',
-        'Life is tough, but so are you.'
-      ];
-  
-      function getDayOfWeek() {
-        const date = new Date();
-        return date.getDay();
-      }
-  
-      function changeImageDaily() {
-        const dailyquote = document.getElementById('heroquote');
-        const dailyImage = document.getElementById('cuteimg');
-        const dayOfWeek = getDayOfWeek();
-  
-        // Get the corresponding image source and quote from the arrays based on the day of the week
-        const imageSource = images[dayOfWeek];
-        const quote = quotes[dayOfWeek];
-  
-        // Change the image source and quote text
-        dailyImage.src = imageSource;
-        dailyquote.innerText = quote;
-  
-        // Optional: You can add alt text or other attributes if needed
-        dailyImage.alt = `Image of ${dayOfWeek}`;
-      }
-  
-      // Call the function to change the image and quote daily
-      changeImageDaily();
-      
+getPublicIPAddress();
+const images = [
+    '1.jpeg', // Sunday
+    '2.jpeg', // Monday
+    '3.jpeg', // Tuesday
+    '4.jpeg', // Wednesday
+    '5.jpeg', // Thursday
+    '6.jpeg', // Friday
+    '7.jpeg' // Saturday
+];
+
+const quotes = [
+    'You are capable of amazing things.',
+    'Every day is a new beginning.',
+    'You are enough.',
+    'The best is yet to come.',
+    'You were born to be real, not to be perfect.',
+    'Your potential is endless.',
+    'Life is tough, but so are you.'
+];
+
+function getDayOfWeek() {
+    const date = new Date();
+    return date.getDay();
+}
+
+function changeImageDaily() {
+    const dailyquote = document.getElementById('heroquote');
+    const dailyImage = document.getElementById('cuteimg');
+    const dayOfWeek = getDayOfWeek();
+
+    // Get the corresponding image source and quote from the arrays based on the day of the week
+    const imageSource = images[dayOfWeek];
+    const quote = quotes[dayOfWeek];
+
+    // Change the image source and quote text
+    dailyImage.src = imageSource;
+    dailyquote.innerText = quote;
+
+    // Optional: You can add alt text or other attributes if needed
+    dailyImage.alt = `Image of ${dayOfWeek}`;
+}
+
+// Call the function to change the image and quote daily
+changeImageDaily();
+let menuToggle = document.querySelector('.menuToggle');
+let sidebar = document.querySelector('.sidebar');
+menuToggle.onclick = function() {
+    menuToggle.classList.toggle('active');
+    sidebar.classList.toggle('active');
+}
+let menulist = document.querySelectorAll('.menulist li');
+
+function activeLink() {
+    menulist.forEach((item) => item.classList.remove('active'));
+    this.classList.add('active');
+}
+menulist.forEach((item) => item.addEventListener('click', activeLink));
