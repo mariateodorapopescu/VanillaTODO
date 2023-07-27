@@ -19,19 +19,11 @@ addEventListener('keypress', function(e) {
         selector.classList.add("element");
         var para = document.createElement("div");
         para.setAttribute("class", "newww");
-        if (txt == "") {
+        const inputVal = txt.trim();
+        if (txt == '' || inputVal == '') {
             alert("Please write something");
         } else {
-            let everything = this.document.createElement('button');
-            everything.setAttribute("class", "altcv");
-            everything.addEventListener('click', function() { alert("ook"); });
-            everything.innerText = "Check all";
-            let cv = document.getElementsByClassName("nuj")[0];
-            if (all == 0) {
-                cv.style.display = "inline";
-            }
             all++;
-            let dell = document.getElementsByClassName("nuj")[1];
             let check = this.document.createElement('input');
             check.type = "checkbox";
             var text = document.createElement('p');
@@ -44,31 +36,233 @@ addEventListener('keypress', function(e) {
             selector.value = "";
             let ics = this.document.createElement('button');
             ics.setAttribute("class", "altcv");
-            ics.addEventListener('click', function() {
-                if (ok == 0) {
-                    ok = 1;
-                    dell.style.display = "block";
-                }
-                let e = para.childNodes;
-                let inp = e[0];
-                let inpp = e[1];
-                let elem = e[2];
-                para.removeChild(elem);
-                para.removeChild(inpp);
-                para.removeChild(inp);
-                para.remove(e);
-                all--;
-                ceva.innerText = all + " items left";
-            });
+            let pls = this.document.createElement('button');
+            pls.setAttribute("class", "altcvv");
             ics.innerText = "X";
             document.getElementsByClassName("container")[0].appendChild(para);
             para.appendChild(ics);
+            pls.innerText = "+";
+            para.appendChild(pls);
+            pls.style.display = 'none';
+            ics.style.display = 'inline';
+            ics.addEventListener('click', function() {
+                para.classList.add('todeletenow');
+                para.style.display = 'none';
+                all--;
+                ceva.innerText = all + " items in total";
+                ics.style.display = 'none';
+                pls.style.display = 'inline';
+            });
+            pls.addEventListener('click', function() {
+                para.classList.remove('todeletenow');
+                all++;
+                ceva.innerText = all + " items in total";
+                ics.style.display = 'inline';
+                pls.style.display = 'none';
+            });
             selector.value = "";
-            ceva.innerText = all + " items left";
+            ceva.innerText = all + " items in total";
         }
     }
 });
 document.getElementById("hbrnm").appendChild(ceva);
+
+
+// end of no local storage
+
+// Element.prototype.insertChildAtIndex = function(child, index) {
+//     if (!index) index = 0;
+//     if (index >= this.children.length) {
+//         this.appendChild(child);
+//     } else {
+//         this.insertBefore(child, this.children[index]);
+//     }
+// };
+
+// function loadListItems() {
+//     const savedList = localStorage.getItem('todoList');
+//     if (savedList) {
+//         const listContainer = document.querySelector('.container');
+//         listContainer.innerHTML = savedList;
+//         all = document.querySelectorAll('.newww').length;
+//         ceva.innerText = all + ' items left';
+
+//         // Restore the checked state and button state of each item
+//         const listData = JSON.parse(localStorage.getItem('todoListData'));
+//         if (listData && listData.length > 0) {
+//             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//             checkboxes.forEach((checkbox, index) => {
+//                 const item = listData[index];
+//                 if (item && item.checked) {
+//                     checkbox.checked = true;
+//                 } else {
+//                     checkbox.checked = false;
+//                 }
+
+//                 const newItem = checkbox.parentElement;
+//                 if (item && item.todeletenow) {
+//                     newItem.style.display = 'none';
+//                     all--;
+//                     ceva.innerText = all + ' items left';
+//                 }
+//             });
+//             for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+//                 document.querySelectorAll('.newww')[i].children[2].style.display = 'inline';
+//                 document.querySelectorAll('.newww')[i].children[3].style.display = 'none';
+//             }
+//             for (i = 0; i < document.querySelectorAll('.todeletenow').length; i++) {
+//                 document.querySelectorAll('.todeletenow')[i].children[2].style.display = 'none';
+//                 document.querySelectorAll('.todeletenow')[i].children[3].style.display = 'inline';
+//             }
+//             const deleteButtons = document.querySelectorAll('.altcv');
+//             const restoreButtons = document.querySelectorAll('.altcvv');
+
+
+//             // ics.addEventListener('click', function() {
+//             //     para.classList.add('todeletenow');
+//             //     para.style.display = 'none';
+//             //     all--;
+//             //     ceva.innerText = all + ' items left';
+//             //     ics.style.display = 'none';
+//             //     pls.style.display = 'inline';
+//             //     listData[index].deleteState = true;
+//             //     para.classList.remove('active');
+//             //     // After removing, save the updated list to local storage
+//             //     saveListItems();
+//             // });
+//             // pls.addEventListener('click', function() {
+//             //     para.classList.remove('todeletenow');
+//             //     all++;
+//             //     ceva.innerText = all + ' items left';
+//             //     ics.style.display = 'inline';
+//             //     pls.style.display = 'none';
+//             //     listData[index].deleteState = false;
+//             //     para.classList.add('active');
+//             //     // After adding, save the updated list to local storage
+//             //     saveListItems();
+//             // });
+
+//             deleteButtons.forEach((deleteBtn, index) => {
+//                 deleteBtn.addEventListener('click', function() {
+//                     const item = listData[index];
+//                     if (!item.deleteState) {
+//                         const newItem = deleteBtn.parentElement;
+//                         newItem.style.display = 'none';
+//                         all--;
+//                         ceva.innerText = all + ' items left';
+//                         item.deleteState = true;
+//                         saveListItems();
+//                     }
+//                 });
+//             });
+//             restoreButtons.forEach((restoreBtn, index) => {
+//                 restoreBtn.addEventListener('click', function() {
+//                     const item = listData[index];
+//                     if (item.deleteState) {
+//                         const newItem = restoreBtn.parentElement;
+//                         newItem.style.display = 'block';
+//                         all++;
+//                         ceva.innerText = all + ' items left';
+//                         item.deleteState = false;
+//                         saveListItems();
+//                     }
+//                 });
+//             });
+//         }
+//     }
+// }
+
+// function saveListItems() {
+//     const listContainer = document.querySelector('.container');
+//     const listHTML = listContainer.innerHTML;
+//     localStorage.setItem('todoList', listHTML);
+//     // Save the state of each item (checked, todeletenow, and deleteState) in an array
+//     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//     const listData = [];
+//     checkboxes.forEach((checkbox, index) => {
+//         const newItem = checkbox.parentElement;
+//         listData.push({
+//             checked: checkbox.checked,
+//             todeletenow: newItem.classList.contains('todeletenow'),
+//             deleteState: newItem.children[3].style.display === 'inline',
+//         });
+//     });
+//     localStorage.setItem('todoListData', JSON.stringify(listData));
+// }
+
+// let selector = document.getElementById('list');
+// let all = 0;
+// var ceva = document.createElement('div');
+// ceva.setAttribute('class', 'footer');
+// ceva.setAttribute('id', 'ftr');
+// addEventListener('keypress', function(e) {
+//     if (e.key === 'Enter') {
+//         let txt = selector.value;
+//         selector.classList.add('element');
+//         var para = document.createElement('div');
+//         para.setAttribute('class', 'newww');
+//         const inputVal = txt.trim();
+//         if (txt == '' || inputVal == '') {
+//             alert('Please write something');
+//         } else {
+//             all++;
+//             let check = this.document.createElement('input');
+//             check.type = 'checkbox';
+//             var text = document.createElement('p');
+//             text.setAttribute('class', 'text');
+//             text.setAttribute('contenteditable', 'true');
+//             text.innerText = txt;
+//             document.getElementsByClassName('container')[0].appendChild(para);
+//             para.appendChild(check);
+//             para.appendChild(text);
+//             selector.value = '';
+//             saveListItems();
+//             let ics = this.document.createElement('button');
+//             ics.setAttribute('class', 'altcv');
+//             let pls = this.document.createElement('button');
+//             pls.setAttribute('class', 'altcvv');
+//             ics.innerText = 'X';
+//             document.getElementsByClassName('container')[0].appendChild(para);
+//             para.appendChild(ics);
+//             pls.innerText = '+';
+//             para.appendChild(pls);
+//             pls.style.display = 'none';
+//             ics.style.display = 'inline';
+//             ics.addEventListener('click', function() {
+//                 para.classList.add('todeletenow');
+//                 para.style.display = 'none';
+//                 all--;
+//                 ceva.innerText = all + ' items left';
+//                 ics.style.display = 'none';
+//                 pls.style.display = 'inline';
+//                 listData[index].deleteState = true;
+//                 para.classList.remove('active');
+//                 // After removing, save the updated list to local storage
+//                 saveListItems();
+//             });
+//             pls.addEventListener('click', function() {
+//                 para.classList.remove('todeletenow');
+//                 all++;
+//                 ceva.innerText = all + ' items left';
+//                 ics.style.display = 'inline';
+//                 pls.style.display = 'none';
+//                 listData[index].deleteState = false;
+//                 para.classList.add('active');
+//                 // After adding, save the updated list to local storage
+//                 saveListItems();
+//             });
+//             selector.value = '';
+//             ceva.innerText = all + ' items left';
+//             // After adding, save the updated list to local storage
+//             saveListItems();
+//         }
+//     }
+// });
+// document.getElementById('hbrnm').appendChild(ceva);
+
+// // Call the function to load list items from local storage on page load
+// loadListItems();
+
 
 const toggleSwitch = document.querySelector('.toggle-switch');
 const sunElement = document.querySelector('.sun');
@@ -232,21 +426,25 @@ function updateBackground() {
     var sunny = big.querySelector(".sunny");
     var moony = big.querySelector(".moony");
     var starry = big.querySelector(".star");
+    var sid = document.querySelector('.sidebar');
 
     if (isDayTime()) {
         big.style.backgroundColor = "#e5d3b3";
         sunny.style.opacity = "1";
         moony.style.opacity = "0";
         starry.style.opacity = "0";
+        sid.classList.remove("night-mode");
     } else {
         big.style.backgroundColor = "rgb(84, 68, 56)";
         moony.style.opacity = "1";
         sunny.style.opacity = "0";
         starry.style.opacity = "1";
+        sid.classList.add(".night-mode");
     }
 }
 
-updateBackground();
+// updateBackground();
+requestAnimationFrame(updateBackground);
 
 function isNoon() {
     var currentHour = new Date().getHours();
@@ -652,3 +850,202 @@ function activeLink() {
     this.classList.add('active');
 }
 menulist.forEach((item) => item.addEventListener('click', activeLink));
+// ...
+// Function to set the checked property of all checkboxes to true
+// function checkAllCheckboxes() {
+//     document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+//         checkbox.checked = true;
+//     });
+//     saveListItems();
+// }
+
+// // Function to set the checked property of all checkboxes to false
+// function uncheckAllCheckboxes() {
+//     document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+//         checkbox.checked = false;
+//     });
+//     saveListItems();
+// }
+
+// let vedemceiasta = document.querySelector('.cevaa');
+// vedemceiasta.querySelector('.nuj').addEventListener('click', checkAllCheckboxes);
+// vedemceiasta.querySelector('#todel').addEventListener('click', uncheckAllCheckboxes);
+// let complit = document.getElementById('complete').addEventListener('click', () => {
+//     for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+//         if (document.querySelectorAll('input[type="checkbox"]')[i].checked == false) {
+//             document.querySelectorAll('.newww')[i].style.display = "none";
+//         }
+//         if (document.querySelectorAll('input[type="checkbox"]')[i].checked == true) {
+//             document.querySelectorAll('.newww')[i].style.display = "flex";
+//         }
+//         for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+//             document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+//         }
+//     }
+//     saveListItems();
+// });
+
+// function vedemnoi() {
+//     if (document.getElementById('complete').classList.contains('active')) {
+//         const buttonElement = document.getElementById('complete');
+//         buttonElement.click();
+//     }
+//     saveListItems();
+//     requestAnimationFrame(vedemnoi);
+// }
+// requestAnimationFrame(vedemnoi);
+
+// let hom = document.getElementById('hom').addEventListener('click', () => {
+//     for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+//         document.querySelectorAll('.newww')[i].style.display = "flex";
+//         for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+//             document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+//         }
+//     }
+//     saveListItems();
+// });
+
+// let progr = document.getElementById('progr').addEventListener('click', () => {
+//     for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+//         if (document.querySelectorAll('input[type="checkbox"]')[i].checked == true) {
+//             document.querySelectorAll('.newww')[i].style.display = "none";
+//         }
+//         if (document.querySelectorAll('input[type="checkbox"]')[i].checked == false) {
+//             document.querySelectorAll('.newww')[i].style.display = "flex";
+//         }
+//         for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+//             document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+//         }
+//     }
+//     saveListItems();
+// });
+
+// function vedemnoiacm() {
+//     if (document.getElementById('progr').classList.contains('active')) {
+//         const buttonElementdoi = document.getElementById('progr');
+//         buttonElementdoi.click();
+//     }
+//     saveListItems();
+//     requestAnimationFrame(vedemnoiacm);
+// }
+// requestAnimationFrame(vedemnoiacm);
+
+// let delit = document.getElementById('delit').addEventListener('click', () => {
+//     for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+//         document.querySelectorAll('.newww')[i].style.display = "none";
+//         for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+//             document.querySelectorAll('.newww.todeletenow')[j].style.display = "flex";
+//         }
+//     }
+//     saveListItems();
+// });
+
+// function vedemnoi() {
+//     if (document.getElementById('delit').classList.contains('active')) {
+//         document.querySelectorAll('altcv').forEach
+//         const buttonElement = document.getElementById('delit');
+//         buttonElement.click();
+//     }
+//     saveListItems();
+//     requestAnimationFrame(vedemnoi);
+// }
+// requestAnimationFrame(vedemnoi);
+
+
+function checkAllCheckboxes() {
+    document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+        checkbox.checked = true;
+    });
+}
+
+// Function to set the checked property of all checkboxes to false
+function uncheckAllCheckboxes() {
+    document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+        checkbox.checked = false;
+    });
+}
+
+let vedemceiasta = document.querySelector('.cevaa');
+vedemceiasta.querySelector('.nuj').addEventListener('click', checkAllCheckboxes);
+vedemceiasta.querySelector('#todel').addEventListener('click', uncheckAllCheckboxes);
+let complit = document.getElementById('complete').addEventListener('click', () => {
+    let unnumarr = 0;
+    for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+        if (document.querySelectorAll('input[type="checkbox"]')[i].checked == false) {
+            document.querySelectorAll('.newww')[i].style.display = "none";
+        }
+        if (document.querySelectorAll('input[type="checkbox"]')[i].checked == true) {
+            document.querySelectorAll('.newww')[i].style.display = "flex";
+            unnumarr++;
+        }
+        for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+            document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+        }
+    }
+    ceva.style.display = 'none';
+});
+
+function vedemnoi() {
+    if (document.getElementById('complete').classList.contains('active')) {
+        const buttonElement = document.getElementById('complete');
+        buttonElement.click();
+    }
+    requestAnimationFrame(vedemnoi);
+}
+requestAnimationFrame(vedemnoi);
+
+let hom = document.getElementById('hom').addEventListener('click', () => {
+    for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+        document.querySelectorAll('.newww')[i].style.display = "flex";
+        for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+            document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+        }
+    }
+    ceva.style.display = 'flex';
+});
+
+let progr = document.getElementById('progr').addEventListener('click', () => {
+    let unnumar = 0;
+    for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+        if (document.querySelectorAll('input[type="checkbox"]')[i].checked == true) {
+            document.querySelectorAll('.newww')[i].style.display = "none";
+        }
+        if (document.querySelectorAll('input[type="checkbox"]')[i].checked == false) {
+            document.querySelectorAll('.newww')[i].style.display = "flex";
+            unnumar++;
+        }
+        for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+            document.querySelectorAll('.newww.todeletenow')[j].style.display = "none";
+        }
+    }
+    ceva.style.display = 'none';
+});
+
+function vedemnoiacm() {
+    if (document.getElementById('progr').classList.contains('active')) {
+        const buttonElementdoi = document.getElementById('progr');
+        buttonElementdoi.click();
+    }
+    requestAnimationFrame(vedemnoiacm);
+}
+requestAnimationFrame(vedemnoiacm);
+
+let delit = document.getElementById('delit').addEventListener('click', () => {
+    for (i = 0; i < document.querySelectorAll('.newww').length; i++) {
+        document.querySelectorAll('.newww')[i].style.display = "none";
+        for (j = 0; j < document.querySelectorAll('.newww.todeletenow').length; j++) {
+            document.querySelectorAll('.newww.todeletenow')[j].style.display = "flex";
+        }
+    }
+    ceva.style.display = 'none';
+});
+
+function vedemnoi() {
+    if (document.getElementById('delit').classList.contains('active')) {
+        document.querySelectorAll('altcv').forEach
+        const buttonElement = document.getElementById('delit');
+        buttonElement.click();
+    }
+    requestAnimationFrame(vedemnoi);
+}
+requestAnimationFrame(vedemnoi);
