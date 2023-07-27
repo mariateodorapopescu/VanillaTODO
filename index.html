@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Vanila todo list</title>
+    <title> VanillaTODO</title>
     <link rel="icon" type="image/png" href="https://i.pinimg.com/1200x/68/8a/a9/688aa9e8fdb8cd02f228714ca69c318e.jpg">
     <link rel="stylesheet" href="stylesheet.css" />
 </head>
@@ -50,43 +50,43 @@
         <div class="clod"></div>
         <div class="clod"></div>
     </div>
-    <div class="darkmod">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <!-- <div class="incaceva"> -->
-            <div class="toggle-switch" id="mytoggle">
-                <div class="ray1"></div>
-                <div class="ray2"></div>
-                <div class="ray3"></div>
-                <div class="ray4"></div>
-                <div class="sun"></div>
-                <div class="moon"></div>
-                <div class="clouds"></div>
-                <div class="stars1"></div>
-                <div class="stars2"></div>
-                <div class="cloud1"></div>
-                <div class="cloud2"></div>
-            </div>
-        <!-- </div> -->
+    <!-- <div class="darkmod"> -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <!-- </div> -->
+    <div class="control">
+        <div class="toggle-switch" id="mytoggle">
+            <div class="ray1"></div>
+            <div class="ray2"></div>
+            <div class="ray3"></div>
+            <div class="ray4"></div>
+            <div class="sun"></div>
+            <div class="moon"></div>
+            <div class="clouds"></div>
+            <div class="stars1"></div>
+            <div class="stars2"></div>
+            <div class="cloud1"></div>
+            <div class="cloud2"></div>
+        </div>
+        <div class="menuToggle"></div>
     </div>
-        
     </div>
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
@@ -95,6 +95,88 @@
         </div>
     </div>
 
+    <div class="sidebar">
+        <ul>
+            <li class="logo" style="--bg: #241910;">
+                <a href="#">
+                    <div class="siicon">
+                        <ion-icon name="heart"></ion-icon>
+                    </div>
+                    <div class="sitext">Vanilla TODO</div>
+                </a>
+            </li>
+            <div class="menulist">
+                <li style="--bg: #faeedf;" class="active">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </div>
+                        <div class="sitextt">All</div>
+                    </a>
+                </li>
+                <li style="--bg: #faeedf;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </div>
+                        <div class="sitextt">Completed</div>
+                    </a>
+                </li>
+                <li style="--bg: #faeedf;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="alert"></ion-icon>
+                        </div>
+                        <div class="sitextt">WIP</div>
+                    </a>
+                </li>
+                <li style="--bg: #faeedf;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </div>
+                        <div class="sitextt">Deleted</div>
+                    </a>
+                </li>
+                <li style="--bg: #faeedf;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="cog"></ion-icon>
+                        </div>
+                        <div class="sitextt">README</div>
+                    </a>
+                </li>
+                <li style="--bg: #faeedf;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="person"></ion-icon>
+                        </div>
+                        <div class="sitextt">Profile</div>
+                    </a>
+                </li>
+            </div>
+            <div class="sibottom">
+                <li style="--bg:#241910;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <div class="imgbx">
+                                <img src="https://i.pinimg.com/1200x/68/8a/a9/688aa9e8fdb8cd02f228714ca69c318e.jpg">
+                            </div>
+                        </div>
+                        <div class="sitextt">USER NAME</div>
+                    </a>
+                </li>
+                <li style="--bg: #241910;">
+                    <a href="#">
+                        <div class="siiconn">
+                            <ion-icon name="exit"></ion-icon>
+                        </div>
+                        <div class="sitextt">Logout</div>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </div>
     <div class="music-container">
         <div class="music">
             <h2 class="title">Click play array to play audio</h2>
@@ -118,11 +200,13 @@
             </div>
         </div>
     </div>
-    
+
     <div class="weather-card">
         <div class="weather-container">
             <div class="left">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149209.png" class="miicn" id="weather-icon">
+                <div class="miicn" id="weather-icon">
+                    <ion-icon name="rainy-outline"></ion-icon>
+                </div>
                 <h5 class="weather-status" id="des">Partly Cloud</h5>
             </div>
             <div class="right">
@@ -132,55 +216,15 @@
         </div>
         <div class="down">
             <h5>H:<span id="humidity">-</span>;</h5>
-                <h5>P:<span id="pressure">-</span>;</h5>
-                <h5>W:<span id="wind-speed">-</span>;</h5>
+            <h5>P:<span id="pressure">-</span>;</h5>
+            <h5>W:<span id="wind-speed">-</span>;</h5>
         </div>
     </div>
     <div class="changing">
-          <img src="1.jpeg" id="cuteimg">
+        <img src="1.jpeg" id="cuteimg">
         <h4 id="heroquote">-</h4>
-      </div>
-      
-    <div class="navigation">
-        <ul>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/846/846449.png"></span>
-                    <span class="mititle">All</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://static.thenounproject.com/png/1668947-200.png"></span>
-                    <span class="mititle">Completed</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/x-512.png"></span>
-                    <span class="mititle">In progress</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"></span>
-                    <span class="mititle">Deleted</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://cdn.icon-icons.com/icons2/1993/PNG/512/circle_customer_help_info_information_service_support_icon_123208.png"></span>
-                    <span class="mititle">Help + About</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><img src="https://pixlok.com/wp-content/uploads/2021/10/Profile_Icon-mc42.png"></span>
-                    <span class="mititle">Profile</span>
-                </a>
-            </li>
-        </ul>
-</div>
+    </div>
+
     <div class="nujceiasta">
         <div class="clock">
             <div class="time" id="time"></div>
@@ -198,7 +242,10 @@
     <div class="container" id="total">
     </div>
     <div id="hbrnm" style="display:block"></div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-<script src="main.js"></script>
+<script src="main.js "></script>
 
 </html>
