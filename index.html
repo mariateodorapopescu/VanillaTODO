@@ -106,7 +106,7 @@
                 </a>
             </li>
             <div class="menulist">
-                <li style="--bg: #faeedf;" class="active">
+                <li style="--bg: #faeedf;" id="hom" class="active">
                     <a href="#">
                         <div class="siiconn">
                             <ion-icon name="home-outline"></ion-icon>
@@ -114,7 +114,7 @@
                         <div class="sitextt">All</div>
                     </a>
                 </li>
-                <li style="--bg: #faeedf;">
+                <li style="--bg: #faeedf;" id="complete">
                     <a href="#">
                         <div class="siiconn">
                             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -122,7 +122,7 @@
                         <div class="sitextt">Completed</div>
                     </a>
                 </li>
-                <li style="--bg: #faeedf;">
+                <li style="--bg: #faeedf;" id="progr">
                     <a href="#">
                         <div class="siiconn">
                             <ion-icon name="alert"></ion-icon>
@@ -130,7 +130,7 @@
                         <div class="sitextt">WIP</div>
                     </a>
                 </li>
-                <li style="--bg: #faeedf;">
+                <li style="--bg: #faeedf;" id="delit">
                     <a href="#">
                         <div class="siiconn">
                             <ion-icon name="trash-outline"></ion-icon>
@@ -234,15 +234,15 @@
             <h1>todos</h1>
         </div>
         <div class="cevaa">
-            <button class="nuj" style="display:none">Check everything</button>
-            <button class="nuj" id="todel" style="display:none">Clear everything</button>
+            <button class="nuj" style="display:inline">Check everything</button>
+            <button class="nuj" id="todel" style="display:block">Clear everything</button>
         </div>
         <input class="parent" id="list" placeholder="What needs to be done?">
     </div>
     <div class="container" id="total">
     </div>
     <div id="hbrnm" style="display:block"></div>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
