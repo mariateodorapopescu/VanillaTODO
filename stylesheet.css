@@ -107,7 +107,8 @@
         z-index: 21;
     }
     
-    .altcv {
+    .altcv,
+    .altcvv {
         background-color: rgb(255, 247, 236);
         border-color: rgba(233, 205, 192, 0);
         font: Comic Sans MS;
@@ -123,7 +124,8 @@
         z-index: 21;
     }
     
-    .altcv:hover {
+    .altcv:hover,
+    .altcvv:hover {
         background-color: rgb(207, 184, 153);
         color: #7b5d43;
     }
@@ -260,12 +262,14 @@
         color: rgb(250, 238, 223);
     }
     
-    .dark-mode .altcv {
+    .dark-mode .altcv,
+    .dark-mode .altcvv {
         background-color: #d2b48c;
         color: rgb(250, 238, 223);
     }
     
-    .dark-mode .altcv:hover {
+    .dark-mode .altcv:hover,
+    .dark-mode .altcvv:hover {
         background-color: #987a65;
         color: #664229;
     }
@@ -275,12 +279,13 @@
         color: rgb(250, 238, 223);
         font-family: Comic Sans MS;
         border-color: rgba(0, 0, 0, 0);
-        border-radius: 8%;
+        border-radius: 1.3rem;
         text-align: center;
         padding-top: 0.1rem;
         padding-bottom: 0.1rem;
         margin-bottom: 1rem;
         margin: 1rem;
+        padding: 0.3rem;
     }
     
     .nuj {
@@ -530,7 +535,7 @@
     }
     
     .dark-mode .toggle-switch {
-        background-color: #664229;
+        background-color: #64574b;
     }
     
     .dark-mode .moon.show {
@@ -617,7 +622,7 @@
         font-style: normal;
         font-family: Comic Sans MS;
         font-size: 1.5rem;
-        background-image: linear-gradient(to right, #ab9b8b, #241910);
+        background-image: linear-gradient(to right, #80756a, #241910);
         -webkit-background-clip: text;
         /* For Safari */
         -webkit-text-fill-color: transparent;
@@ -970,7 +975,7 @@
     h5,
     h4,
     .mititle {
-        background-image: linear-gradient(to right, #8e8174, #241910);
+        background-image: linear-gradient(to right, #80756a, #241910);
         -webkit-background-clip: text;
         /* For Safari */
         -webkit-text-fill-color: transparent;
@@ -1001,7 +1006,7 @@
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
         /* Apply a blur effect */
-        border-radius: 20%;
+        border-radius: 1.3rem;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         margin-top: 0.5rem;
@@ -1553,7 +1558,7 @@
         border-bottom-left-radius: 1.5rem;
     }
     
-    .night-mode .sidebar ul li.active {
+    .sidebar .night-mode ul li.active {
         background: var(--clr-primary-dark);
     }
     
@@ -1569,10 +1574,6 @@
         box-shadow: 1rem 1rem 0 1rem var(--clr-primary-light);
     }
     
-    .night-mode .sidebar ul li.active::before {
-        background: var(--clr-primary-dark);
-    }
-    
     .sidebar ul li.active::after {
         content: '';
         position: absolute;
@@ -1584,10 +1585,6 @@
         border-top-right-radius: 2rem;
         box-shadow: 1rem -1rem 0 1rem var(--clr-primary-light);
         z-index: 20;
-    }
-    
-    .night-mode .sidebar ul li.active::after {
-        box-shadow: 1rem -1rem 0 1rem var(--clr-primary-dark);
     }
     
     .sidebar ul li.logo {
@@ -1609,10 +1606,6 @@
         /* padding-left: 0.3rem; */
     }
     
-    .night-mode .sidebar ul li.logo a .siicon {
-        /* color: var(--clr-primary-dark); */
-    }
-    
     .sidebar ul li.logo a .sitext {
         font-size: 1.2em;
         font-weight: 500;
@@ -1627,10 +1620,6 @@
         letter-spacing: 0.05em;
         transition: 0.5s;
         font-family: Comic Sans MS;
-    }
-    
-    .night-mode .sidebar ul li.logo a .sitext {
-        color: var(--clr-primary-dark);
     }
     
     .sidebar ul li a,
@@ -1745,8 +1734,6 @@
     
     .menuToggle {
         position: relative;
-        /* left: 90%;
-        top: 10%; */
         width: 50px;
         height: 50px;
         background-color: #fdebdf;
@@ -1759,11 +1746,11 @@
     }
     
     .dark-mode .menuToggle {
-        background-color: #664229;
+        background-color: #a5876a;
     }
     
     .menuToggle:hover {
-        background-color: #a5876a;
+        background-color: #beafa0;
     }
     
     .menuToggle::before {
@@ -1815,12 +1802,21 @@
         position: absolute;
         left: 87%;
         top: 5%;
-        height: 14%;
+        height: 18%;
+        background-color: rgba(250, 238, 223, 0.5);
+        backdrop-filter: blur(5px);
+        font-family: Comic Sans MS;
+        -webkit-backdrop-filter: blur(2px);
+        padding: 0.8rem;
+        border-radius: 2rem;
+    }
+    
+    .dark-mode .control {
+        background-color: rgba(206, 171, 128, 0.3);
     }
     
      :root {
-        --clr-primary-light: #e5d3b3;
-        --clr-primary-dark: #664229;
+        --clr-primary-light: #d2b48c;
         font-family: Comic Sans MS;
         z-index: 1;
     }
